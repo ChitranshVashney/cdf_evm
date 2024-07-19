@@ -1,66 +1,29 @@
-## Foundry
+# GaussianCDFContract
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Overview
 
-Foundry consists of:
+The `GaussianCDFContract` is a Solidity smart contract designed to compute the Cumulative Distribution Function (CDF) of a Gaussian (normal) distribution. The CDF is crucial in statistics, providing the probability that a random variable drawn from a Gaussian distribution is less than or equal to a specified value.
 
--   **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
--   **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
--   **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
--   **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+By utilizing fixed-point arithmetic, this contract ensures precision in calculations, which is especially important in financial and statistical applications.
 
-## Documentation
+## Key Concepts
 
-https://book.getfoundry.sh/
+- **CDF (Cumulative Distribution Function)**: A function that describes the probability that a random variable takes on a value less than or equal to `x`.
+- **Gaussian Distribution**: A continuous probability distribution defined by its mean (μ) and standard deviation (σ).
+- **Fixed-Point Arithmetic**: A method of representing real numbers that allows for precise calculations without floating-point errors.
 
-## Usage
+## Contract Functions
 
-### Build
+The contract implements several internal and public functions:
 
-```shell
-$ forge build
-```
+- **`errorFunc`**
 
-### Test
+  ```js
+  function errorFunc(int256 x) internal pure returns (int256)
+  ```
 
-```shell
-$ forge test
-```
+- **`errorFunc`**
 
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+  ```js
+  function cdf(int256 x, int256 mu, int256 sigma) public pure returns (int256)
+  ```
